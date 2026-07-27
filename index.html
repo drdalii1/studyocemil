@@ -7,79 +7,65 @@
 <title>Stüdyo Cemil</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
-margin:0;
-background:#111;
-font-family:Arial,Helvetica,sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-color:white;
+    background:#111;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
 .card{
-
-background:#1b1b1b;
-padding:40px;
-border-radius:20px;
-width:340px;
-text-align:center;
-box-shadow:0 0 30px rgba(255,215,0,.15);
-
+    width:360px;
+    background:#1d1d1d;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(255,215,0,.15);
 }
 
 h1{
-
-margin:0;
-font-size:36px;
-color:#FFD700;
-
+    color:#FFD700;
+    margin-bottom:10px;
+    font-size:34px;
 }
 
-h2{
-
-margin-top:10px;
-font-size:22px;
-
+.stars{
+    color:#FFD700;
+    font-size:34px;
+    margin:20px 0;
 }
 
 p{
-
-color:#ddd;
-
+    color:#ddd;
+    line-height:1.6;
+    margin-bottom:25px;
 }
 
-.star{
-
-font-size:38px;
-color:#FFD700;
-
-margin:20px 0;
-
+button{
+    width:100%;
+    border:none;
+    background:#FFD700;
+    color:#000;
+    font-size:18px;
+    font-weight:bold;
+    padding:16px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.loader{
-
-margin-top:25px;
-font-size:18px;
-
+button:hover{
+    transform:scale(1.03);
 }
-
-a{
-
-display:inline-block;
-margin-top:30px;
-background:#FFD700;
-color:black;
-padding:15px 25px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-
-}
-
 </style>
 
 </head>
@@ -88,48 +74,40 @@ font-weight:bold;
 
 <div class="card">
 
-<h1>📸</h1>
+<h1>📸 Stüdyo Cemil</h1>
 
-<h2>Stüdyo Cemil</h2>
-
-<div class="star">
-
+<div class="stars">
 ★★★★★
-
 </div>
 
 <p>
-
-Değerli yorumunuz bizim için çok önemlidir.
-
+Değerli yorumunuz bizim için çok önemlidir.<br>
+Google'da bizi değerlendirmeniz bizi mutlu eder.
 </p>
 
-<div class="loader">
-
-Google Yorum Sayfası Açılıyor...
-
-</div>
-
-<a href="https://search.google.com/local/writereview?placeid=ChIJG_OOIJ6wyhQRw3v4i_2wWaU">
-
-Açılmazsa Buraya Dokunun
-
-</a>
+<button onclick="openGoogleReview()">
+Google'da Yorum Yap
+</button>
 
 </div>
 
 <script>
 
-setTimeout(function(){
+function openGoogleReview(){
 
-window.location.href="https://search.google.com/local/writereview?placeid=ChIJG_OOIJ6wyhQRw3v4i_2wWaU";
+    // Önce Google uygulamasını açmayı dene
+    window.location.href="google://search?q=St%C3%BCdyo%20Cemil";
 
-},1200);
+    // Açılmazsa web yorum sayfasına git
+    setTimeout(function(){
+
+        window.location.href="https://search.google.com/local/writereview?placeid=ChIJG_OOIJ6wyhQRw3v4i_2wWaU";
+
+    },1200);
+
+}
 
 </script>
 
 </body>
-
 </html>
-
-<!-- redeploy -->

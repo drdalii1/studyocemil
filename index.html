@@ -4,68 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stüdyo Cemil</title>
+<title>Stüdyo Cemil | Google Yorum</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
 body{
-    background:#111;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+background:#111;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:20px;
 }
 
 .card{
-    width:360px;
-    background:#1d1d1d;
-    padding:35px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 0 30px rgba(255,215,0,.15);
+
+width:380px;
+background:#1b1b1b;
+border-radius:22px;
+padding:35px;
+text-align:center;
+box-shadow:0 0 40px rgba(0,0,0,.45);
+
+}
+
+.logo{
+
+font-size:42px;
+margin-bottom:10px;
+
 }
 
 h1{
-    color:#FFD700;
-    margin-bottom:10px;
-    font-size:34px;
+
+color:white;
+font-size:32px;
+margin-bottom:8px;
+
+}
+
+.subtitle{
+
+color:#cfcfcf;
+margin-bottom:20px;
+font-size:17px;
+
 }
 
 .stars{
-    color:#FFD700;
-    font-size:34px;
-    margin:20px 0;
+
+font-size:34px;
+color:#FFD700;
+margin-bottom:20px;
+animation:pulse 1.6s infinite;
+
 }
 
-p{
-    color:#ddd;
-    line-height:1.6;
-    margin-bottom:25px;
+@keyframes pulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+
+}
+
+.info{
+
+color:#ddd;
+line-height:1.7;
+font-size:16px;
+margin-bottom:30px;
+
 }
 
 button{
-    width:100%;
-    border:none;
-    background:#FFD700;
-    color:#000;
-    font-size:18px;
-    font-weight:bold;
-    padding:16px;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.2s;
+
+width:100%;
+padding:18px;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:14px;
+cursor:pointer;
+
+background:linear-gradient(90deg,#4285F4,#34A853,#FBBC05,#EA4335);
+
+color:white;
+
+transition:.25s;
+
 }
 
 button:hover{
-    transform:scale(1.03);
+
+transform:scale(1.03);
+
 }
+
+.small{
+
+margin-top:22px;
+font-size:14px;
+color:#999;
+
+}
+
+.loading{
+
+margin-top:18px;
+color:#ccc;
+display:none;
+
+}
+
 </style>
 
 </head>
@@ -74,36 +132,109 @@ button:hover{
 
 <div class="card">
 
-<h1>📸 Stüdyo Cemil</h1>
+<div class="logo">📸</div>
+
+<h1>Stüdyo Cemil</h1>
+
+<div class="subtitle">
+Google'da bizi değerlendirin
+</div>
 
 <div class="stars">
 ★★★★★
 </div>
 
-<p>
-Değerli yorumunuz bizim için çok önemlidir.<br>
-Google'da bizi değerlendirmeniz bizi mutlu eder.
-</p>
+<div class="info">
 
-<button onclick="openGoogleReview()">
+Yorumunuz bizim için çok değerli.
+
+<br><br>
+
+📍 Eyüpsultan
+
+<br>
+
+☎ 0542 236 29 61
+
+</div>
+
+<button onclick="startReview()">
+
 Google'da Yorum Yap
+
 </button>
+
+<div class="loading" id="loading">
+
+Google uygulaması açılıyor...
+
+</div>
+
+<div class="small">
+
+Google uygulaması açılamazsa yorum sayfası otomatik açılacaktır.
+
+</div>
 
 </div>
 
 <script>
 
-function openGoogleReview(){
+const reviewUrl="https://search.google.com/local/writereview?placeid=ChIJG_OOIJ6wyhQRw3v4i_2wWaU";
 
-    // Önce Google uygulamasını açmayı dene
-    window.location.href="google://search?q=St%C3%BCdyo%20Cemil";
+function isiPhone(){
 
-    // Açılmazsa web yorum sayfasına git
-    setTimeout(function(){
+return /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-        window.location.href="https://search.google.com/local/writereview?placeid=ChIJG_OOIJ6wyhQRw3v4i_2wWaU";
+}
 
-    },1200);
+function isAndroid(){
+
+return /Android/i.test(navigator.userAgent);
+
+}
+
+function startReview(){
+
+document.getElementById("loading").style.display="block";
+
+if(isiPhone()){
+
+try{
+
+window.location="google://search?q=Stüdyo%20Cemil";
+
+}catch(e){}
+
+setTimeout(function(){
+
+window.location.href=reviewUrl;
+
+},900);
+
+return;
+
+}
+
+if(isAndroid()){
+
+try{
+
+window.location="google://search?q=Stüdyo%20Cemil";
+
+}catch(e){}
+
+setTimeout(function(){
+
+window.location.href=reviewUrl;
+
+},900);
+
+return;
+
+}
+
+window.location.href=reviewUrl;
 
 }
 
